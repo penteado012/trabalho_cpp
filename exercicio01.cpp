@@ -4,7 +4,6 @@
 
 using namespace std;
 
-// Função para posicionar o cursor no console
 void gotoxy(int x, int y) {
     COORD coord;
     coord.X = x;
@@ -21,19 +20,17 @@ int main() {
     int larguraTela = 80;
     int colunaInicial = (larguraTela - mensagem.length()) / 2;
 
-    // Mostra a mensagem na linha 5, centralizada
     gotoxy(colunaInicial, 5);
     cout << mensagem;
 
-    Sleep(1000); // Espera 1 segundo antes da animação
+    Sleep(1000);
 
-    // Faz cada letra cair até a linha 20
     for (int i = 0; i < mensagem.length(); i++) {
         for (int linha = 5; linha < 20; linha++) {
             gotoxy(colunaInicial + i, linha);
             cout << mensagem[i];
             Sleep(200);
-            gotoxy(colunaInicial + i, linha); // Apaga a anterior
+            gotoxy(colunaInicial + i, linha);
             cout << ' ';
         }
         // Escreve na linha final
@@ -41,6 +38,6 @@ int main() {
         cout << mensagem[i];
     }
 
-    gotoxy(0, 22); // Move o cursor pra baixo no final
+    gotoxy(0, 22);
     return 0;
 }
